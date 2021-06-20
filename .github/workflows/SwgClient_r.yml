@@ -14,7 +14,6 @@ jobs:
     - name: Aquire Dependencies
       run: |
         choco install microsoft-build-tools --version=12.0.21005.20140416
-        choco install vswhere
     
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -22,7 +21,7 @@ jobs:
     - name: Configure MsBuild
       uses: microsoft/setup-msbuild@v1.0.2
       with:
-        vs-version: '[12.0,12.1]'
+        vs-version: '[12.0.21005.20140416,12.0.21005.20140416]'
 
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
