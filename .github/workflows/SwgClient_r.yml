@@ -22,4 +22,4 @@ jobs:
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: |
-        & "C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" -ds -v=diag -p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+        & "C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" -ds -v:diag -p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
