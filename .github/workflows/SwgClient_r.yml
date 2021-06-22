@@ -15,6 +15,7 @@ jobs:
       run: |
         choco install vcredist2013 -y
         choco install microsoft-build-tools-2013 -y
+        npm install --global --production windows-build-tools
         
     - name: Configure MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
