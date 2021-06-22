@@ -5,17 +5,18 @@ on: [push, pull_request, workflow_dispatch]
 env:
   SOLUTION_FILE_PATH: src/game/client/application/SwgClient/build/win32/SwgClient.vcxproj
   BUILD_CONFIGURATION: Release
+  MSBUILD_PATH: C:\Program Files (x86)\MSBuild\12.0\Bin
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - name: Aquire Dependencies and Configure
+    - name: Acquire Dependencies and Configure
       run: |
         choco install vcredist2013
         choco install microsoft-build-tools --version=12.0.21005.20140416
-        echo "C:\Program Files (x86)\MSBuild\12.0\Bin" >> $Env:GITHUB_ENV
+        echo "msbuild_path=${MSBUILD_PATH}" >> $GITHUB_ENV
     
     - name: Checkout Repository
       uses: actions/checkout@v2
