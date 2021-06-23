@@ -15,7 +15,7 @@ jobs:
         echo "Acquire VS 2013"
         curl http://download.microsoft.com/download/7/1/B/71BA74D8-B9A0-4E6C-9159-A8335D54437E/vs_community.exe -o vs_community.exe
         echo "Install VS 2013"
-        .\vs_community.exe /norestart /passive
+        .\vs_community.exe /full /norestart /passive
         echo "Install MS Build Tools v120"
         choco install microsoft-build-tools-2013 -y
         echo "SDK Version..."
