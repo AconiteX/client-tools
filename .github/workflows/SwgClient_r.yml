@@ -15,11 +15,10 @@ jobs:
       run: |
         choco install vcredist2013 -y
         choco install microsoft-build-tools-2013 -y
-        wget "https://swgsource.blob.core.windows.net/swgsource/$env:AZURE_PATH"
+        Invoke-WebRequest -Uri "https://swgsource.blob.core.windows.net/swgsource/$env:AZURE_PATH"
         $driveLetter = (Mount-DiskImage "$isoPath" -PassThru | Get-Volume).DriveLetter
         Set-Location -Path "$driveLetter`:\"
         .\winexpress_full.exe /noweb /norestart /passive
-                
         
     - name: Checkout Repository
       uses: actions/checkout@v2
