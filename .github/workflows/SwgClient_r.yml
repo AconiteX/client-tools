@@ -4,7 +4,6 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   SOLUTION_FILE_PATH: src/game/client/application/SwgClient/build/win32/SwgClient.vcxproj
-  AZURE_PATH: = ${{secrets.AZURE_FILE_KEY}}
 
 jobs:
   build:
@@ -15,7 +14,7 @@ jobs:
       run: |
         choco install vcredist2013 -y
         choco install microsoft-build-tools-2013 -y
-        Invoke-WebRequest -Uri "https://swgsource.blob.core.windows.net/swgsource/$env:AZURE_PATH"
+        Invoke-WebRequest -Uri "https://swgsource.blob.core.windows.net/swgsource/vs_express_2013.iso"
         $driveLetter = (Mount-DiskImage "$isoPath" -PassThru | Get-Volume).DriveLetter
         Set-Location -Path "$driveLetter`:\"
         .\winexpress_full.exe /noweb /norestart /passive
