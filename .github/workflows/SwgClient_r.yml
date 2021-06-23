@@ -7,12 +7,11 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2016
 
     steps:
     - run: choco install microsoft-build-tools-2013 -y
-    - run: choco install windows-sdk-8.1
-      
+    
     - name: Checkout Repository
       uses: actions/checkout@v2
 
