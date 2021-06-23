@@ -14,11 +14,8 @@ jobs:
       run: |
         choco install vcredist2013 -y
         choco install microsoft-build-tools-2013 -y
-        $ProgressPreference = 'SilentlyContinue'
-        Invoke-WebRequest -Uri "https://swgsource.blob.core.windows.net/swgsource/vs_express_2013.iso" -DisableKeepAlive -Outfile vs_express_2013.iso
-        $driveLetter = (Mount-DiskImage "vs_express_2013.iso" -PassThru | Get-Volume).DriveLetter
-        Set-Location -Path "$driveLetter`:\"
-        .\winexpress_full.exe /noweb /norestart /passive
+        Invoke-WebRequest -Uri "https://download.microsoft.com/download/7/1/B/71BA74D8-B9A0-4E6C-9159-A8335D54437E/vs_community.exe" -Outfile "vs_community.exe"
+        .\vs_community.exe /norestart /passive
         
     - name: Checkout Repository
       uses: actions/checkout@v2
