@@ -14,8 +14,7 @@ jobs:
       run: |
         choco install vcredist2013 -y
         choco install microsoft-build-tools-2013 -y
-        Invoke-WebRequest -Uri "https://download.microsoft.com/download/7/1/B/71BA74D8-B9A0-4E6C-9159-A8335D54437E/vs_community.exe" -Outfile "vs_community.exe"
-        .\vs_community.exe /norestart /passive
+        choco install visualstudiocommunity2013 -y
         
     - name: Checkout Repository
       uses: actions/checkout@v2
