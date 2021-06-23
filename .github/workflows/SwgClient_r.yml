@@ -10,11 +10,18 @@ jobs:
     runs-on: windows-2016
 
     steps:
-    - run: |
-        choco install microsoft-build-tools-2013 -y
+    - run: Configure Build
+        echo "Acquire VS 2013"
         curl http://download.microsoft.com/download/7/1/B/71BA74D8-B9A0-4E6C-9159-A8335D54437E/vs_community.exe -o vs_community.exe
-        .\vs_community.exe /norestart /passive /quiet
-    
+        echo "Install VS 2013"
+        .\vs_community.exe /norestart /passive
+        echo "Install MS Build Tools v120"
+        choco install microsoft-build-tools-2013 -y
+        echo "SDK Version..."
+        echo $(Get-Item "hklm:\SOFTWARE\Microsoft\Microsoft SDKs\Windows").GetValue("CurrentVersion")
+        echo "Validate VS Install..."
+        Get-ChildItem "C:\Program Files (x86)\Microsoft Visual Studio 12.0"
+        
     - name: Checkout Repository
       uses: actions/checkout@v2
 
@@ -24,6 +31,5 @@ jobs:
         mkdir C:\vs13deps
         git clone -v https://github.com/aconitex/vs13deps.git "C:\vs13deps"
         $env:VCTargetsPath = "C:\vs13deps\Microsoft.Cpp\v4.0\V120"
-        $env:
         & "C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" -ds -v:diag -p:Configuration=Release ${{env.SOLUTION_FILE_PATH}}
         
