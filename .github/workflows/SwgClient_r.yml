@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Configure Build
-    - run: |
+      run: |
         echo "Acquire VS 2013"
         curl http://download.microsoft.com/download/7/1/B/71BA74D8-B9A0-4E6C-9159-A8335D54437E/vs_community.exe -o vs_community.exe
         echo "Install VS 2013"
