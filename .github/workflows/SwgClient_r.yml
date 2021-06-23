@@ -14,7 +14,7 @@ jobs:
       run: |
         choco install vcredist2013 -y
         choco install microsoft-build-tools-2013 -y
-        choco install visualstudiocommunity2013 -y
+        choco install visualstudio2013ultimate -y
         
     - name: Checkout Repository
       uses: actions/checkout@v2
