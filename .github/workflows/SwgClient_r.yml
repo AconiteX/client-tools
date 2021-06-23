@@ -22,4 +22,4 @@ jobs:
         mkdir C:\vs
         git clone -v https://github.com/aconitex/vs13deps.git "C:\vs"
         $env:VCTargetsPath = "C:\vs\vs13deps\Microsoft.Cpp\v4.0\V120"
-        & "C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" -ds -v:diag -p:Configuration=Release ${{env.SOLUTION_FILE_PATH}}     
+        & "C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" -ds -v:diag -p:Configuration=Release;VisualStudioVersion=12.0 ${{env.SOLUTION_FILE_PATH}}     
